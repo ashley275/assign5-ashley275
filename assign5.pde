@@ -465,7 +465,7 @@ void draw() {
       popMatrix();
 
       // Depth UI
-		drawDepthUI();
+      drawDepthUI();
 
       // Timer
       gameTimer --;
@@ -564,7 +564,6 @@ boolean isHit(float ax, float ay, float aw, float ah, float bx, float by, float 
 String convertFramesToTimeString(int frames){
   int minute = (int) frames / 60 / 60;
   int second = (int) frames / 60 - minute * 60;
-  println(minute);
   return (second < 10) ? "0" + minute + ":0" + second : "0" + minute + ":" + second;
 }
 
