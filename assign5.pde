@@ -494,63 +494,63 @@ void draw() {
           gameState = GAME_RUN;
           mousePressed = false;
           initGame();
-			}
+        }
 
-		}else{
+      }else{
 
-			image(restartNormal, START_BUTTON_X, START_BUTTON_Y);
+        image(restartNormal, START_BUTTON_X, START_BUTTON_Y);
 
-		}
-		break;
+      }
+    break;
 
-		case GAME_WIN: // Gameover Screen
-		image(gamewin, 0, 0);
+    case GAME_WIN: // Gameover Screen
+      image(gamewin, 0, 0);
 		
-		if(START_BUTTON_X + START_BUTTON_WIDTH > mouseX
-	    && START_BUTTON_X < mouseX
-	    && START_BUTTON_Y + START_BUTTON_HEIGHT > mouseY
-	    && START_BUTTON_Y < mouseY) {
+      if(START_BUTTON_X + START_BUTTON_WIDTH > mouseX
+      && START_BUTTON_X < mouseX
+      && START_BUTTON_Y + START_BUTTON_HEIGHT > mouseY
+      && START_BUTTON_Y < mouseY) {
 
-			image(restartHovered, START_BUTTON_X, START_BUTTON_Y);
-			if(mousePressed){
-				gameState = GAME_RUN;
-				mousePressed = false;
-				initGame();
-			}
+        image(restartHovered, START_BUTTON_X, START_BUTTON_Y);
+        if(mousePressed){
+          gameState = GAME_RUN;
+          mousePressed = false;
+          initGame();
+        }
 
-		}else{
+      }else{
 
-			image(restartNormal, START_BUTTON_X, START_BUTTON_Y);
+        image(restartNormal, START_BUTTON_X, START_BUTTON_Y);
 
-		}
-		break;
+      }
+    break;
 		
-	}
+  }
 }
 
 void drawDepthUI(){
-	String depthString = (playerRow + 1) + "m";
-	textSize(56);
-	textAlign(RIGHT, BOTTOM);
-	fill(0, 120);
-	text(depthString, width + 3, height + 3);
-	fill(#ffcc00);
-	text(depthString, width, height);
+  String depthString = (playerRow + 1) + "m";
+  textSize(56);
+  textAlign(RIGHT, BOTTOM);
+  fill(0, 120);
+  text(depthString, width + 3, height + 3);
+  fill(#ffcc00);
+  text(depthString, width, height);
 }
 
 void drawTimerUI(){
-	String timeString = convertFramesToTimeString(gameTimer);
+  String timeString = convertFramesToTimeString(gameTimer);
 
-	textAlign(LEFT, BOTTOM);
+  textAlign(LEFT, BOTTOM);
 
-	// Time Text Shadow Effect - You don't have to change this!
-	fill(0, 120);
-	text(timeString, 3, height + 3);
+  // Time Text Shadow Effect - You don't have to change this!
+  fill(0, 120);
+  text(timeString, 3, height + 3);
 
-	// Actual Time Text
-	color timeTextColor = getTimeTextColor(gameTimer);
-	fill(timeTextColor);
-	text(timeString, 0, height);
+  // Actual Time Text
+  color timeTextColor = getTimeTextColor(gameTimer);
+  fill(timeTextColor);
+  text(timeString, 0, height);
 }
 
 void addTime(float seconds){
@@ -562,9 +562,9 @@ boolean isHit(float ax, float ay, float aw, float ah, float bx, float by, float 
 }
 
 String convertFramesToTimeString(int frames){
-  int minute = (int)frames / 60 / 60;
-  int second = (int)frames / 60 - minute * 60;
-	return (second < 10) ? "0" + minute + ":0" + second : "0" + minute + ":" + second;
+  int minute = floor(frames / 60 / 60);
+  int second = floor(frames / 60) - minute * 60;
+  return (second < 10) ? "0" + minute + ":0" + second : "0" + minute + ":" + second;
 }
 
 color getTimeTextColor(int frames){
@@ -590,37 +590,37 @@ void drawCaution(int enemyIndex){
 }
 
 void keyPressed(){
-	if(key==CODED){
-		switch(keyCode){
-			case LEFT:
-			leftState = true;
-			break;
-			case RIGHT:
-			rightState = true;
-			break;
-			case DOWN:
-			downState = true;
-			break;
-		}
-	}else{
-		if(key=='t'){
-			gameTimer -= 180;
-		}
-	}
+  if(key==CODED){
+    switch(keyCode){
+      case LEFT:
+        leftState = true;
+      break;
+      case RIGHT:
+        rightState = true;
+      break;
+      case DOWN:
+        downState = true;
+      break;
+    }
+  }else{
+    if(key=='t'){
+      gameTimer -= 180;
+    }
+  }
 }
 
 void keyReleased(){
-	if(key==CODED){
-		switch(keyCode){
-			case LEFT:
-			leftState = false;
-			break;
-			case RIGHT:
-			rightState = false;
-			break;
-			case DOWN:
-			downState = false;
-			break;
-		}
-	}
+  if(key==CODED){
+    switch(keyCode){
+      case LEFT:
+        leftState = false;
+      break;
+      case RIGHT:
+        rightState = false;
+      break;
+      case DOWN:
+        downState = false;
+      break;
+    }
+  }
 }
